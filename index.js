@@ -19,7 +19,7 @@ const fetchMovieData = async () => {
 
 async function showMovie() {
     const json = await fetchMovieData();
-    let search = await document.getElementById("search-input").value.toLowerCase();
+    let search = document.getElementById("search-input").value.toLowerCase();
     json.results.forEach((movie) => {
         if (movie.title.toLowerCase().includes(search)) {
             movieCard(movie);
@@ -60,10 +60,12 @@ async function language(clicked_id) {
     languagejson.forEach((movie) => {
         movieCard(movie);
     });
+    focusCursor();
 }
 
 function focusCursor() {
     document.getElementById('search-input').focus();
+    document.getElementById('search-input').value = null;
 }
 showMovie();
 
