@@ -17,15 +17,13 @@ const fetchMovieData = async () => {
     }
 }
 
-function showMovie() {
-    const movie = fetchMovieData();
-    movie.then((json) => {
-        let search = document.getElementById("search-input").value.toLowerCase();
-        json.results.forEach((movie) => {
-            if (movie.title.toLowerCase().includes(search)) {
-                movieCard(movie);
-            }
-        });
+async function showMovie() {
+    const json = await fetchMovieData();
+    let search = await document.getElementById("search-input").value.toLowerCase();
+    json.results.forEach((movie) => {
+        if (movie.title.toLowerCase().includes(search)) {
+            movieCard(movie);
+        }
     });
 }
 
