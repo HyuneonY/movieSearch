@@ -72,6 +72,17 @@ div {
     unicode-bidi: isolate;
 }
 
+.language{
+    margin: 10px 0 10px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    margin-right: 10px;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;

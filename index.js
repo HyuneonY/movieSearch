@@ -25,6 +25,7 @@ async function showMovie() {
             movieCard(movie);
         }
     });
+    focusCursor();
 }
 
 function movieCard(movie) {
@@ -51,4 +52,21 @@ function searchMovie() {
     showMovie();
 }
 
+async function language(clicked_id) {
+    remove_cards();
+    const json = await fetchMovieData();
+    const languagejson = await json.results.filter(movie => movie["original_language"] === clicked_id);
+
+    languagejson.forEach((movie) => {
+        movieCard(movie);
+    });
+}
+
+function focusCursor() {
+    document.getElementById('search-input').focus();
+}
 showMovie();
+
+
+
+

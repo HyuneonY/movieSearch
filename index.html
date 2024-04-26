@@ -21,10 +21,17 @@
     </header>
     <from class="search">
         <label>영화 검색 : </label>
-        <input type="text" id="search-input" placeholder="영화 제목 입력">
-        <button type="button" class="btn btn-danger" onclick = "searchMovie()">검색</button>
-    </from>
+        <input type="text" id="search-input" onkeyup="if(window.event.keyCode==13){searchMovie()}" placeholder="영화 제목 입력">
+        <button type="button" id="searchBtn" class="btn btn-danger" onclick="searchMovie()">검색</button>
 
+    </from>
+    <from class="language">
+        <button type="button" id="en" class="btn btn-danger" onclick="language(this.id)">영어</button>
+        <button type="button" id="ko" class="btn btn-danger" onclick="language(this.id)">한국</button>
+        <button type="button" id="ja" class="btn btn-danger" onclick="language(this.id)">일본</button>
+        <button type="button" id="hi" class="btn btn-danger" onclick="language(this.id)">인도</button>
+        <button type="button" id="it" class="btn btn-danger" onclick="language(this.id)">이탈리아</button>
+    </from>
     <div class="card-list" id="cards">
 
     </div>
