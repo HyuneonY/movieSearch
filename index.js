@@ -17,9 +17,15 @@ const fetchMovieData = async () => {
     }
 }
 
-function showMovie(json) {
-    json.results.forEach((movie) => {
-        movieCard(movie);
+function showMovie() {
+    const movie = fetchMovieData();
+    movie.then((json) => {
+        let search = document.getElementById("search-input").value.toLowerCase();
+        json.results.forEach((movie) => {
+            if (movie.title.toLowerCase().includes(search)) {
+                movieCard(movie);
+            }
+        });
     });
 }
 
@@ -38,26 +44,13 @@ function movieCard(movie) {
 
 function remove_cards() {
     const cardlist = document.getElementById('cards');
-  
+
     cardlist.innerHTML = "";
-  }
+}
 
-function search() {
+function searchMovie() {
     remove_cards();
-    const movie = fetchMovieData();
-    movie.then((json) => {
-        let search = document.getElementById("search-input").value.toLowerCase();
-        json.results.forEach((movie) => {
-            if(search === '' || movie.title.toLowerCase().includes(search)){
-                movieCard(movie);
-            }
-        });
-    }); 
+    showMovie();
 }
 
-function start() {
-    const movie = fetchMovieData();
-    movie.then((json) => showMovie(json));
-}
-
-start();
+showMovie();
